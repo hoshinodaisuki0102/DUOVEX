@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="theme-color" content="#080b17"/>
+  <meta name="description" content="DUOVEX — 3 lanes, 4 keys, one shared lane. Play three v0.51 charts in your browser."/>
+  <title>DUOVEX — Play v0.51</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="back-grid" aria-hidden="true"></div>
+  <div class="back-light back-light-a" aria-hidden="true"></div>
+  <div class="back-light back-light-b" aria-hidden="true"></div>
+  <div class="shell" id="shell">
+    <header class="topbar">
+      <button id="logo" class="logo" aria-label="Duovex 홈으로">DUO<span>VEX</span><i></i></button>
+      <div class="version">BROWSER EDITION <span class="bright">/ v0.51</span></div>
+      <button id="topSettings" class="icon-btn" aria-label="설정">⚙</button>
+    </header>
+    <main>
+      <section id="screen-menu" class="screen active menu-screen">
+        <div class="menu-copy">
+          <div class="eyebrow"><span class="dot"></span> RHYTHM PROTOTYPE <span class="line"></span> 03 LANES / 04 KEYS</div>
+          <div class="display-logo" aria-label="DUOVEX">DUO<span>VEX</span></div>
+          <div class="tagline">TWO HANDS. <span>ONE SHARED LANE.</span></div>
+          <div class="menu-actions">
+            <button class="btn primary" id="playButton"><span class="btn-key">01</span> PLAY <span class="arrow">↗</span></button>
+            <button class="btn secondary" id="howButton"><span class="btn-key">02</span> HOW TO PLAY <span class="arrow">↗</span></button>
+          </div>
+          <div class="menu-small">D &nbsp; F &nbsp; <span class="center-divide">/</span> &nbsp; J &nbsp; K <span class="tiny-rule"></span> WHITE · BLACK · DUAL</div>
+        </div>
+        <div class="menu-art" aria-hidden="true">
+          <div class="art-glow"></div>
+          <div class="art-rails">
+            <div class="art-rail"><i class="fall f1"></i><i class="fall f4"></i></div>
+            <div class="art-rail shared"><i class="fall dual f2"></i><i class="fall white f5"></i></div>
+            <div class="art-rail"><i class="fall black f3"></i><i class="fall black f6"></i></div>
+            <div class="art-hitline"></div>
+            <div class="art-keylabels">D <span>F <em>J</em></span> K</div>
+          </div>
+        </div>
+      </section>
+      <section id="screen-select" class="screen select-screen">
+        <div class="section-head"><div><div class="eyebrow">SELECT A CHART</div><h1>PLAY <span class="muted">/</span> LEVELS</h1></div><button class="text-btn" id="selectBack">← BACK</button></div>
+        <div class="level-grid" id="levelGrid"></div>
+        <div class="select-footer"><span>모든 레벨은 무음 채보입니다.</span><span>KEYBOARD  D F J K &nbsp; · &nbsp; PRESS ENTER TO START</span></div>
+      </section>
+      <section id="screen-game" class="screen game-screen">
+        <div class="game-frame" id="gameFrame"><canvas id="gameCanvas" width="1280" height="720" aria-label="DUOVEX gameplay"></canvas><div id="gamePause" class="game-modal hidden"><div class="modal-inside"><div class="eyebrow">PAUSED</div><h2>PAUSE</h2><button id="resumeBtn" class="btn primary">RESUME <span class="arrow">↗</span></button><button id="retryPauseBtn" class="btn secondary">RETRY</button><button id="quitPauseBtn" class="btn secondary">LEVEL SELECT</button></div></div><div id="touchControls" class="touch-controls"><button data-key="0" class="touch-key white-key">D</button><button data-key="1" class="touch-key white-key">F</button><button data-key="2" class="touch-key black-key">J</button><button data-key="3" class="touch-key black-key">K</button></div></div>
+        <div class="game-foot"><div><span>SPACE</span> PAUSE <span>ESC</span> SELECT</div><div class="speed-control"><button id="speedMinus" aria-label="노트 속도 낮추기">−</button><span id="speedValue">SPEED 1.0×</span><button id="speedPlus" aria-label="노트 속도 높이기">＋</button></div><div><span>F3 / F4</span> SPEED</div></div>
+      </section>
+      <section id="screen-results" class="screen results-screen"><div class="results-card"><div class="eyebrow">TRACK COMPLETE</div><h1 id="resultTitle">LEVEL 1</h1><div class="result-main"><div><label>ACCURACY</label><strong id="resultAcc">00.00%</strong></div><div><label>SCORE</label><strong id="resultScore">0</strong></div></div><div id="resultGrades" class="result-grades"></div><div class="result-sub"><span id="resultMax">MAX COMBO —</span><span id="resultFastSlow">FAST — / SLOW —</span></div><div class="results-actions"><button class="btn primary" id="retryBtn">RETRY <span class="arrow">↗</span></button><button class="btn secondary" id="selectBtn">LEVEL SELECT</button></div></div></section>
+      <section id="screen-how" class="screen how-screen"><div class="section-head"><div><div class="eyebrow">THE SYSTEM</div><h1>HOW TO PLAY</h1></div><button class="text-btn" id="howBack">← BACK</button></div><div class="how-layout"><div class="how-note"><div class="big-diagram"><div class="diagram-lane"><div class="sample-note white"></div><span>1</span></div><div class="diagram-lane central"><div class="sample-note split"></div><span>2</span></div><div class="diagram-lane"><div class="sample-note black"></div><span>3</span></div></div><div class="diagram-keys"><span>D</span><span>F</span><span>J</span><span>K</span></div></div><div class="how-text"><h2>3 LANES. 4 KEYS.</h2><p>하얀 노트는 왼손 <b>D/F</b>, 검은 노트는 오른손 <b>J/K</b>로 처리합니다.</p><p>중앙 2번 레인은 두 손이 공유합니다. 대각선으로 나뉜 노트는 <b>F+J 동시 입력</b>입니다.</p><p>롱노트는 끝까지 누르고 있으면 됩니다. 떼는 타이밍 판정은 없습니다.</p><div class="judge-hint">PERFECT <span>±50 ms</span> · GREAT <span>±80 ms</span> · GOOD <span>±120 ms</span> · BAD <span>±160 ms</span></div><button id="howPlay" class="btn primary">SELECT LEVEL <span class="arrow">↗</span></button></div></div></section>
+      <section id="screen-settings" class="screen settings-screen"><div class="section-head"><div><div class="eyebrow">PREFERENCES</div><h1>OPTIONS</h1></div><button class="text-btn" id="settingsBack">← BACK</button></div><div class="settings-card"><label for="speedRange">SCROLL SPEED <strong id="speedLabel">1.0×</strong></label><input id="speedRange" type="range" min="0.5" max="3" step="0.1" value="1"/><label for="volumeRange">HIT SOUND <strong id="volumeLabel">32%</strong></label><input id="volumeRange" type="range" min="0" max="1" step="0.01" value="0.32"/><div class="setting-actions"><button id="previewWhite" class="btn secondary">WHITE SOUND</button><button id="previewBlack" class="btn secondary">BLACK SOUND</button></div><label class="checkrow"><input type="checkbox" id="metronomeBox"/> METRONOME (무음 레벨의 박자 안내)</label><div class="footnote">설정은 이 브라우저에 저장됩니다.</div></div></section>
+    </main>
+    <footer class="site-footer"><span>DUOVEX © PROTOTYPE</span><span>WEB PLAYTEST / 0.51 CHART DATA</span></footer>
+  </div>
+  <script src="game.js" defer></script>
+</body>
+</html>
