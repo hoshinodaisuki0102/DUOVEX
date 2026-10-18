@@ -1,0 +1,18 @@
+DUOVEX v0.6.1 - Unity 6.6 compilation hotfix
+
+Problem: Assets/Scripts/DuovexUIFactory.cs(308,30) CS0119:
+  DuovexUIFactory.Slider(...) is a method, not the UI Slider type.
+
+Fix: renamed helper Slider(...) to CreateSlider(...), explicitly qualified
+UnityEngine.UI.Slider and UnityEngine.UI.Slider.Direction.
+
+Apply:
+1. Close Unity or stop Play mode and back up your project.
+2. Extract this ZIP into your existing Unity project's root folder,
+   overwriting Assets/Scripts/DuovexUIFactory.cs.
+3. Reopen Unity and wait for script recompilation.
+4. When the Console has no red compile errors, exit Safe Mode.
+5. Then use Tools > Duovex > Generate Editable UI Scene.
+
+Note: This resolves the reported CS0119 specifically.
+This project was not compiled in Unity in the creation environment.
