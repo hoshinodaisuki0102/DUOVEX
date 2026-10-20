@@ -1,2 +1,0 @@
-Place your own music file here and rename it song.ogg, song.wav or song.mp3.
-Unity will import it as Assets/Resources/song, which the demo then loads automatically.
