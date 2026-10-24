@@ -1,0 +1,12 @@
+# DUOVEX Built-in Levels (v0.5 → v0.51)
+
+The existing silent TUTORIAL is LEVEL 1 (unchanged).
+LEVEL 2 INTERLOCK: 125 BPM, shared-lane switching, half-beats, chords and independent holds.
+LEVEL 3 OVERDRIVE: 150 BPM, more frequent half-beats and quarter-beat bursts, dual holds and cross-hand play.
+
+In the PLAY song list, three built-in levels now appear before LOCAL CHART and user-imported songs.
+Each level is playable immediately without audio. Chart Studio automatically selects LOCAL CHART on entry because the built-in levels are read-only.
+RETRY preserves the selected level. Existing user songs and saved charts are not replaced.
+
+For an existing v0.5 Unity project, exit Play Mode and merge the patch Assets folder (C# + two chart JSON files).
+Open Assets/Scenes/Main.unity and press Play. The project was statically checked, but not run in Unity 6.6 in this environment.
